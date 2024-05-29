@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public PlayerCondition condition;
 
     public ItemData itemData;
+
     public Action addItem;
 
     private void Awake()

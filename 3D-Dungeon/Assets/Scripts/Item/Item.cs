@@ -6,7 +6,7 @@ public class Item : MonoBehaviour
 
     public string ItemDataToString()
     {
-        string str = $"{itemData.name}\n{itemData.itemDescription}";
+        string str = $"{itemData.itemName}\n{itemData.itemDescription}";
         return str;
     }
 

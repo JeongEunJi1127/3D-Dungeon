@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_Resource_Rock
   m_EditorClassIdentifier: 
   itemName: "\uBC14\uC704"
-  itemDescription: ".. \uB3CC\uC774 \uC65C \uBCF4\uB77C\uC0C9\uC774\uC9C0?"
+  itemDescription: "\uBC14\uC704\uAC00 \uBCF4\uB77C\uC0C9?"
   itemType: 2
   icon: {fileID: 21300000, guid: e61976ceaf6919c47853f5a7ea09288b, type: 3}
   dropPrefab: {fileID: 5202732821079448320, guid: cebfacc247a640945a2c30b442202fca, type: 3}

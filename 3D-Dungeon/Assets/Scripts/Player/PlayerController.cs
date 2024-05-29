@@ -18,14 +18,19 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity;
     private float camCurXRot;
 
+    [Header("Inventory")]
+    public GameObject Inventory;
+
     private Vector2 mouseDelta;
 
-
+    private bool canLook = true;
     private Rigidbody _rigidbody;
+    private Animator _animator;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -35,7 +40,10 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        CameraLook();
+        if (canLook)
+        {
+            CameraLook();
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -43,15 +51,17 @@ public class PlayerController : MonoBehaviour
         if(context.phase == InputActionPhase.Performed)
         {
             curMoveInput = context.ReadValue<Vector2>();
+            _animator.SetBool("Walk", true);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
             curMoveInput = Vector2.zero;
+            _animator.SetBool("Walk", false);
         }
     }
 
     private void Move()
-    {
+    { 
         Vector3 dir = transform.forward * curMoveInput.y + transform.right * curMoveInput.x;
         dir *= moveSpeed;
         dir.y = _rigidbody.velocity.y;
@@ -75,8 +85,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started && OnGround())
+        if (context.phase == InputActionPhase.Started && OnGround())
         {
+            _animator.SetTrigger("IsJump");
             _rigidbody.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
         }
     }
@@ -105,15 +116,18 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-
+            ToggleCursor();
+            if (Inventory.activeInHierarchy) Inventory.SetActive(false);
+            else  Inventory.SetActive(true);
         }
     }
 
-    public void OnInteract(InputAction.CallbackContext context)
+    void ToggleCursor()
     {
-        if (context.phase == InputActionPhase.Started)
-        {
-
-        }
+        // toggle은 현재 커서가 잠겨있는지 여부
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
+        // 잠겨있으면 풀고, 안잠겨있으면 잠궈버림
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canLook = toggle;
     }
 }

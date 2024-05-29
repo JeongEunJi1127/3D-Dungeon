@@ -31,6 +31,7 @@ public class ItemData : ScriptableObject
     public GameObject dropPrefab;
 
     [Header("Stack")]
+    // 아이템을 쌓을 수 있는지 -> 장착 가능한 장비는 쌓을 수 X
     public bool canStack;
     public int maxStackAmount;
 

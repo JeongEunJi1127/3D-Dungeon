@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Item_Resource_Tree
   m_EditorClassIdentifier: 
   itemName: "\uB098\uBB34"
-  itemDescription: "\uC624\uC5FC\uB41C \uB098\uBB34\uC774"
+  itemDescription: "\uC624\uC5FC\uB41C \uB098\uBB34\uC774\uB2E4 "
   itemType: 2
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 0728f49dc38099c4799a06d989da0697, type: 3}
   dropPrefab: {fileID: 9069115365609291303, guid: 60f79905accf3b24fa0114b941f1aac0, type: 3}
-  canStack: 0
-  maxStackAmount: 0
+  canStack: 1
+  maxStackAmount: 12
   equipPrefab: {fileID: 0}
   itemDataConsumables: []
