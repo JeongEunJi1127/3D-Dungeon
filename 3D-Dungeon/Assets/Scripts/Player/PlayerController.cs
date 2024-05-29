@@ -33,6 +33,11 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
+    private void LateUpdate()
+    {
+        CameraLook();
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         if(context.phase == InputActionPhase.Performed)
@@ -58,6 +63,15 @@ public class PlayerController : MonoBehaviour
         mouseDelta = context.ReadValue<Vector2>();
     }
 
+    void CameraLook()
+    {
+        // 마우스가 위로 올라가면 카메라는 아래로 내려가야함 -> x축 Rotate이므로
+        camCurXRot += mouseDelta.y * lookSensitivity;
+        camCurXRot = Mathf.Clamp(camCurXRot, minX, maxX);
+        cameraContainer.localEulerAngles = new Vector3(-camCurXRot, 0, 0);
+
+        transform.eulerAngles += new Vector3(0,mouseDelta.x*lookSensitivity, 0);
+    }
 
     public void OnJump(InputAction.CallbackContext context)
     {
