@@ -12,7 +12,6 @@ public class DamageIndicator : MonoBehaviour
     private void Start()
     {
         CharacterManager.Instance.Player.condition.OnTakeDamage += Flash;
-        gameObject.SetActive(false);
     }
 
     public void Flash()

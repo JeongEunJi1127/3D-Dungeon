@@ -15,6 +15,12 @@ public enum ConsumableType
     JumpHigh
 }
 
+public enum EquipableType
+{
+    Fast,
+    JumpHigh
+}
+
 [System.Serializable]
 public class ItemDataConsumable
 {
@@ -39,6 +45,8 @@ public class ItemData : ScriptableObject
 
     [Header("Equip")]
     public GameObject equipPrefab;
+    public EquipableType equipType;
+    public int equipValue;
 
     [Header("Use")]
     public ItemDataConsumable[] itemDataConsumables;

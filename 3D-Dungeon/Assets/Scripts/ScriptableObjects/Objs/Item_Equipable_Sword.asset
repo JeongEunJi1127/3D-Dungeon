@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: Item_Equipable_Sword
   m_EditorClassIdentifier: 
   itemName: "\uCE7C"
-  itemDescription: "\uB0A0\uCE74\uB85C\uC6CC \uBCF4\uC778\uB2E4"
+  itemDescription: "\uC7A5\uCC29\uD558\uBA74 \uB192\uAC8C \uB6F8 \uC218 \uC788\uC744
+    \uAC83 \uAC19\uB2E4"
   itemType: 0
   icon: {fileID: 21300000, guid: 4f2f320a217307a48a107491b1d17ebb, type: 3}
   dropPrefab: {fileID: 355312524381552382, guid: b84d7ca3927758646a65731cc107aa76, type: 3}
   canStack: 0
   maxStackAmount: 0
   equipPrefab: {fileID: 355312524381552382, guid: b84d7ca3927758646a65731cc107aa76, type: 3}
+  equipType: 1
+  equipValue: 100
   itemDataConsumables: []
