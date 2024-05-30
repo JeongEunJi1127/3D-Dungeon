@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -9,7 +10,12 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jump")]
     public float jumpHeight;
+    public float jumpItemHeight;
+    public float jumpStamina;
     public LayerMask groundLayerMask;
+
+    [Header("Run")]
+    public float runSpeed;
 
     [Header("Look")]
     public Transform cameraContainer;
@@ -44,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (canLook)
+        if (canLook && !CharacterManager.Instance.Player.condition.isDie)
         {
             CameraLook();
         }
@@ -65,11 +71,24 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Move()
-    { 
+    {
         Vector3 dir = transform.forward * curMoveInput.y + transform.right * curMoveInput.x;
         dir *= moveSpeed;
         dir.y = _rigidbody.velocity.y;
         _rigidbody.velocity = dir;
+    }
+    
+    public void RunForAWhile(float runTime)
+    {       
+        StartCoroutine(RunningTime(runTime));
+    }
+
+    IEnumerator RunningTime(float time)
+    {
+        float curMoveSpeed = moveSpeed;
+        moveSpeed = runSpeed;
+        yield return new WaitForSeconds(time);
+        moveSpeed = curMoveSpeed;
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -91,9 +110,36 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started && OnGround())
         {
+            Jump(jumpHeight);
+        }
+    }
+
+    public void Jump(float jumpHeight)
+    {
+        if (CharacterManager.Instance.Player.condition.GetStamina() >= jumpStamina)
+        {
+            UseJumpStamina();
             _animator.SetTrigger("IsJump");
             _rigidbody.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
         }
+    }
+
+    public void JumpHighForAWhile(float jumpHighTime)
+    {
+        StartCoroutine(JumpHighTime(jumpHighTime));
+    }
+
+    IEnumerator JumpHighTime(float time)
+    {
+        float curJumpHeight = jumpHeight;
+        jumpHeight = jumpItemHeight;
+        yield return new WaitForSeconds(time);
+        jumpHeight = curJumpHeight;
+    }
+
+    public void UseJumpStamina()
+    {
+        CharacterManager.Instance.Player.condition.UseStamina(jumpStamina);
     }
 
     bool OnGround()
@@ -126,7 +172,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void ToggleCursor()
+    public void ToggleCursor()
     {
         // toggle은 현재 커서가 잠겨있는지 여부
         bool toggle = Cursor.lockState == CursorLockMode.Locked;

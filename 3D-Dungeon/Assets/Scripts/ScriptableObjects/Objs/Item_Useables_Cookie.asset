@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b5123aec211669459b90b7ac46b7d18, type: 3}
-  m_Name: Item_Resource_Tree
+  m_Name: Item_Useables_Cookie
   m_EditorClassIdentifier: 
-  itemName: "\uB098\uBB34"
-  itemDescription: "\uC624\uC5FC\uB41C \uB098\uBB34\uC774\uB2E4 "
-  itemType: 2
-  icon: {fileID: 21300000, guid: 0728f49dc38099c4799a06d989da0697, type: 3}
-  dropPrefab: {fileID: 4451911284787244074, guid: 76d9e1d4a80215a41b25fa791fafd215, type: 3}
+  itemName: "\uCFE0\uD0A4"
+  itemDescription: "\uBA39\uC73C\uBA74 5\uCD08\uAC04 \uB192\uAC8C \uB6F4\uB2E4 "
+  itemType: 1
+  icon: {fileID: 21300000, guid: 03d8f7b9298ea9c449844ff4599a24a8, type: 3}
+  dropPrefab: {fileID: 7968877002816994076, guid: bb285724e2c64684b817d021a6bc867d, type: 3}
   canStack: 1
   maxStackAmount: 12
   equipPrefab: {fileID: 0}
-  itemDataConsumables: []
+  itemDataConsumables:
+  - type: 3
+    value: 5

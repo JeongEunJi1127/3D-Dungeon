@@ -165,6 +165,10 @@ public class UIInventory : MonoBehaviour
                     CharacterManager.Instance.Player.condition.Eat(itemData.itemData.itemDataConsumables[i].value);
                     break;
                 case ConsumableType.Fast:
+                    CharacterManager.Instance.Player.controller.RunForAWhile(itemData.itemData.itemDataConsumables[i].value);
+                    break;
+                case ConsumableType.JumpHigh:
+                    CharacterManager.Instance.Player.controller.JumpHighForAWhile(itemData.itemData.itemDataConsumables[i].value);
                     break;
             }            
         }

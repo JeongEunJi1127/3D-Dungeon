@@ -7,4 +7,9 @@ public class SceneChangeManager : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
+
+    public void GoToLobbyScene()
+    {
+        SceneManager.LoadScene("LobbyScene");
+    }
 }

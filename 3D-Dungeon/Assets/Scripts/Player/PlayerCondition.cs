@@ -1,8 +1,13 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerCondition : MonoBehaviour, IDamageable
 {
     public UICondition uiCondition;
+
+    [Header("Die")]
+    public GameObject dieCanvas;
+    public bool isDie = false;
 
     Condition Health { get { return uiCondition.health; } }
     Condition Hunger { get { return uiCondition.hunger; } }
@@ -33,7 +38,26 @@ public class PlayerCondition : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        dieCanvas.SetActive(true);
+        isDie = true;
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 
+    public bool UseStamina(float amount)
+    {
+        if (Stamina.curValue - amount < 0)
+        {
+            return false;
+        }
+        Stamina.Subtract(amount);
+        return true;
+    }
+    
+    public float GetStamina()
+    {
+        return Stamina.curValue;
     }
 
     private void UpdateHealthForHunger()
