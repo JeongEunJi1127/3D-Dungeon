@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (canLook && !CharacterManager.Instance.Player.condition.isDie)
+        if (canLook && !CharacterManager.Instance.Player.condition.gameEnd)
         {
             CameraLook();
         }
@@ -61,7 +61,8 @@ public class PlayerController : MonoBehaviour
         if(context.phase == InputActionPhase.Performed)
         {
             curMoveInput = context.ReadValue<Vector2>();
-            _animator.SetBool("Walk", true);
+            if(OnGround()) _animator.SetBool("Walk", true);
+
         }
         else if (context.phase == InputActionPhase.Canceled)
         {

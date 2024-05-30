@@ -314,7 +314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '3D Dungeun Exploration '
+  m_text: 3D Platform Exploration Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2384160d4cacc3f438ef147778bfd7e4, type: 2}
   m_sharedMaterial: {fileID: 4610546301129290758, guid: 2384160d4cacc3f438ef147778bfd7e4, type: 2}
