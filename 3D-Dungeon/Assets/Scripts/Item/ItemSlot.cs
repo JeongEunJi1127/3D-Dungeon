@@ -5,8 +5,11 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour
 {
     public ItemData itemData;
+    public UIInventory inventory;
 
     public Image icon;
+    public int index;
+    public bool equipped;
     public TextMeshProUGUI quantityText;
     public int quantity;    
 
@@ -20,5 +23,10 @@ public class ItemSlot : MonoBehaviour
     {
         icon.sprite = null;
         quantityText.text = string.Empty;
+    }
+
+    public void OnClickSlot()
+    {
+        inventory.SelectItem(index);
     }
 }

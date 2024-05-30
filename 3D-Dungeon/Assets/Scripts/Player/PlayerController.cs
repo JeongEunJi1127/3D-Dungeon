@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
     }
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     private void FixedUpdate()
     {
@@ -128,6 +132,6 @@ public class PlayerController : MonoBehaviour
         bool toggle = Cursor.lockState == CursorLockMode.Locked;
         // 잠겨있으면 풀고, 안잠겨있으면 잠궈버림
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
-        canLook = toggle;
+        canLook = !toggle;
     }
 }

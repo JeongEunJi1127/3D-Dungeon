@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Item_Useables_Apple
   m_EditorClassIdentifier: 
   itemName: "\uC0AC\uACFC"
-  itemDescription: "\uC0C8\uBE68\uAC04 \uC0AC\uACFC\uB2E4"
+  itemDescription: "\uB3D9\uADF8\uB797\uB2E4 "
   itemType: 1
-  icon: {fileID: 21300000, guid: 723767d936583644cb9f2b5258f39df2, type: 3}
+  icon: {fileID: 21300000, guid: 2b17e4812c63bdc4d88699997f1d5573, type: 3}
   dropPrefab: {fileID: 388876489497171537, guid: d0ddd93953187fd4195f9cea4a7b8a56, type: 3}
   canStack: 1
   maxStackAmount: 12

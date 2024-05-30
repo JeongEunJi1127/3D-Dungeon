@@ -10,7 +10,8 @@ public enum ItemType
 public enum ConsumableType
 {
     Hunger,
-    Health
+    Health,
+    Fast
 }
 
 [System.Serializable]
