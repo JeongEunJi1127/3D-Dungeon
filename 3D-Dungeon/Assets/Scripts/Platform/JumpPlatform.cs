@@ -10,7 +10,6 @@ public class JumpPlatform : MonoBehaviour
         // Vector3.Dot = 벡터간 내적
         if ( Mathf.Approximately(value,-1) )
         {
-            Debug.Log("asdf");
             CharacterManager.Instance.Player.controller.Jump(jumpPlatformForce);
         }        
     }
